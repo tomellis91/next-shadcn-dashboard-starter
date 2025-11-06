@@ -8,35 +8,35 @@ type MetricCardData = Omit<MetricCardProps, 'Icon'> & { icon: typeof IconTrendin
 const CARD_METRIC_DATA: MetricCardData[] = [
   {
     icon: IconTrendingUp,
-    title: "$1,250.00",
-    description: "Total Revenue",
-    chipText: "+12.5%",
-    footerTitle: "Trending up this month",
-    footerSubtitle: "Visitors for the last 6 months"
+    title: "1",
+    description: "New Recommendations",
+    chipText: "+100%",
+    footerTitle: "New Insights Available",
+    footerSubtitle: "Click to view more detail"
   },
   {
     icon: IconTrendingDown,
-    title: "1,234",
-    description: "New Customers",
-    chipText: "-20%",
-    footerTitle: "Down 20% this period",
-    footerSubtitle: "Acquisition needs attention"
+    title: "$1,362.44",
+    description: "Montly Subscriptions",
+    chipText: "0%",
+    footerTitle: "Down 0% this period",
+    footerSubtitle: "Subscriptions need review"
   },
   {
     icon: IconTrendingUp,
-    title: "45,678",
-    description: "Active Accounts",
-    chipText: "+12.5%",
-    footerTitle: "Strong user retention",
-    footerSubtitle: "Engagement exceed targets"
+    title: "$0.0",
+    description: "Potential Savings",
+    chipText: "0%",
+    footerTitle: "No savings identified",
+    footerSubtitle: "Click to see why"
   },
   {
     icon: IconTrendingUp,
     title: "4.5%",
-    description: "Growth Rate",
+    description: "Monthly Spend",
     chipText: "+4.5%",
-    footerTitle: "Steady performance increase",
-    footerSubtitle: "Meets growth projections"
+    footerTitle: "Slight increase",
+    footerSubtitle: "Click to see where"
   }
 ];
 
