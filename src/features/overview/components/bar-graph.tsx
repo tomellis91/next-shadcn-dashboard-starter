@@ -18,6 +18,43 @@ import {
 } from '@/components/ui/chart';
 
 export const description = 'An interactive bar chart';
+interface MonthData {
+  month: string;
+  
+}
+
+interface expenseTotal {
+  income: number;
+  spending: number;
+}
+
+const expenseData = [
+  {
+    month: "Jan",
+    income: 23346.5,
+    spending: 31096.21,
+  },
+  {
+    month: "Feb",
+    income: 21356,
+    spending: 22789.26,
+  },
+  {
+    month: "Mar",
+    income: 27887,
+    spending: 27744.71,
+  },
+  {
+    month: "Apr",
+    income: 43346.5,
+    spending: 19096.21,
+  },
+  {
+    month: "May",
+    income: 13466.5,
+    spending: 11096.21,
+  }
+];
 
 const chartData = [
   { date: '2024-04-01', desktop: 222, mobile: 150 },
@@ -117,13 +154,13 @@ const chartConfig = {
   views: {
     label: 'Page Views'
   },
-  desktop: {
-    label: 'Desktop',
+  income: {
+    label: 'Income',
     color: 'var(--primary)'
   },
-  mobile: {
-    label: 'Mobile',
-    color: 'var(--primary)'
+  spending: {
+    label: 'Spending',
+    color: 'var(--secondaryf)'
   },
   error: {
     label: 'Error',
@@ -133,12 +170,12 @@ const chartConfig = {
 
 export function BarGraph() {
   const [activeChart, setActiveChart] =
-    React.useState<keyof typeof chartConfig>('desktop');
+    React.useState<keyof typeof chartConfig>('income');
 
   const total = React.useMemo(
     () => ({
-      desktop: chartData.reduce((acc, curr) => acc + curr.desktop, 0),
-      mobile: chartData.reduce((acc, curr) => acc + curr.mobile, 0)
+      income: expenseData.reduce((acc, curr) => acc + curr.income, 0),
+      spending: expenseData.reduce((acc, curr) => acc + curr.spending, 0)
     }),
     []
   );
@@ -163,18 +200,18 @@ export function BarGraph() {
     <Card className='@container/card !pt-3'>
       <CardHeader className='flex flex-col items-stretch space-y-0 border-b !p-0 sm:flex-row'>
         <div className='flex flex-1 flex-col justify-center gap-1 px-6 !py-0'>
-          <CardTitle>Bar Chart - Interactive</CardTitle>
+          <CardTitle>Cashflow</CardTitle>
           <CardDescription>
             <span className='hidden @[540px]/card:block'>
-              Total for the last 3 months
+              Total for the last 6 months
             </span>
             <span className='@[540px]/card:hidden'>Last 3 months</span>
           </CardDescription>
         </div>
         <div className='flex'>
-          {['desktop', 'mobile', 'error'].map((key) => {
+          {['income', 'spending', 'error'].map((key) => {
             const chart = key as keyof typeof chartConfig;
-            if (!chart || total[key as keyof typeof total] === 0) return null;
+            
             return (
               <button
                 key={chart}
@@ -186,7 +223,7 @@ export function BarGraph() {
                   {chartConfig[chart].label}
                 </span>
                 <span className='text-lg leading-none font-bold sm:text-3xl'>
-                  {total[key as keyof typeof total]?.toLocaleString()}
+                  { total[key as keyof typeof total]?.toLocaleString()}
                 </span>
               </button>
             );
@@ -199,7 +236,7 @@ export function BarGraph() {
           className='aspect-auto h-[250px] w-full'
         >
           <BarChart
-            data={chartData}
+            data={expenseData}
             margin={{
               left: 12,
               right: 12
@@ -221,18 +258,11 @@ export function BarGraph() {
             </defs>
             <CartesianGrid vertical={false} />
             <XAxis
-              dataKey='date'
+              dataKey='month'
               tickLine={false}
               axisLine={false}
               tickMargin={8}
               minTickGap={32}
-              tickFormatter={(value) => {
-                const date = new Date(value);
-                return date.toLocaleDateString('en-US', {
-                  month: 'short',
-                  day: 'numeric'
-                });
-              }}
             />
             <ChartTooltip
               cursor={{ fill: 'var(--primary)', opacity: 0.1 }}
