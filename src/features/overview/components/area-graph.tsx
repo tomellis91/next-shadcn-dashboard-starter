@@ -17,6 +17,7 @@ import {
   ChartTooltip,
   ChartTooltipContent
 } from '@/components/ui/chart';
+import { expenseData } from '@/data/expense-data';
 
 const chartData = [
   { month: 'January', desktop: 186, mobile: 80 },
@@ -31,13 +32,13 @@ const chartConfig = {
   visitors: {
     label: 'Visitors'
   },
-  desktop: {
-    label: 'Desktop',
-    color: 'var(--primary)'
+  spending: {
+    label: 'Spending',
+    color: 'hsl(0, 84%, 60%)'
   },
-  mobile: {
-    label: 'Mobile',
-    color: 'var(--primary)'
+  income: {
+    label: 'Income',
+    color: 'hsl(142, 76%, 36%)'
   }
 } satisfies ChartConfig;
 
@@ -45,9 +46,9 @@ export function AreaGraph() {
   return (
     <Card className='@container/card'>
       <CardHeader>
-        <CardTitle>Area Chart - Stacked</CardTitle>
+        <CardTitle>Cashflow</CardTitle>
         <CardDescription>
-          Showing total visitors for the last 6 months
+          Showing total cashflow for the last 6 months
         </CardDescription>
       </CardHeader>
       <CardContent className='px-2 pt-4 sm:px-6 sm:pt-6'>
@@ -56,7 +57,7 @@ export function AreaGraph() {
           className='aspect-auto h-[250px] w-full'
         >
           <AreaChart
-            data={chartData}
+            data={expenseData}
             margin={{
               left: 12,
               right: 12
@@ -66,24 +67,24 @@ export function AreaGraph() {
               <linearGradient id='fillDesktop' x1='0' y1='0' x2='0' y2='1'>
                 <stop
                   offset='5%'
-                  stopColor='var(--color-desktop)'
+                  stopColor='var(--color-spending)'
                   stopOpacity={1.0}
                 />
                 <stop
                   offset='95%'
-                  stopColor='var(--color-desktop)'
+                  stopColor='var(--color-spending)'
                   stopOpacity={0.1}
                 />
               </linearGradient>
               <linearGradient id='fillMobile' x1='0' y1='0' x2='0' y2='1'>
                 <stop
                   offset='5%'
-                  stopColor='var(--color-mobile)'
+                  stopColor='var(--color-income)'
                   stopOpacity={0.8}
                 />
                 <stop
                   offset='95%'
-                  stopColor='var(--color-mobile)'
+                  stopColor='var(--color-income)'
                   stopOpacity={0.1}
                 />
               </linearGradient>
@@ -102,14 +103,14 @@ export function AreaGraph() {
               content={<ChartTooltipContent indicator='dot' />}
             />
             <Area
-              dataKey='mobile'
+              dataKey='income'
               type='natural'
               fill='url(#fillMobile)'
               stroke='var(--color-mobile)'
               stackId='a'
             />
             <Area
-              dataKey='desktop'
+              dataKey='spending'
               type='natural'
               fill='url(#fillDesktop)'
               stroke='var(--color-desktop)'

@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
+import { expenseData } from '@/data/expense-data';
 
 import {
   Card,
@@ -10,6 +11,7 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
+
 import {
   ChartConfig,
   ChartContainer,
@@ -18,43 +20,6 @@ import {
 } from '@/components/ui/chart';
 
 export const description = 'An interactive bar chart';
-interface MonthData {
-  month: string;
-  
-}
-
-interface expenseTotal {
-  income: number;
-  spending: number;
-}
-
-const expenseData = [
-  {
-    month: "Jan",
-    income: 23346.5,
-    spending: 31096.21,
-  },
-  {
-    month: "Feb",
-    income: 21356,
-    spending: 22789.26,
-  },
-  {
-    month: "Mar",
-    income: 27887,
-    spending: 27744.71,
-  },
-  {
-    month: "Apr",
-    income: 43346.5,
-    spending: 19096.21,
-  },
-  {
-    month: "May",
-    income: 13466.5,
-    spending: 11096.21,
-  }
-];
 
 const chartData = [
   { date: '2024-04-01', desktop: 222, mobile: 150 },
@@ -156,11 +121,11 @@ const chartConfig = {
   },
   income: {
     label: 'Income',
-    color: 'var(--primary)'
+    color: 'hsl(142, 76%, 36%)'
   },
   spending: {
     label: 'Spending',
-    color: 'var(--secondaryf)'
+    color: 'hsl(0, 84%, 60%)'
   },
   error: {
     label: 'Error',
