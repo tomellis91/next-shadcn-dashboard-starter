@@ -52,7 +52,7 @@ export const transactionData  = [
     category: "Dining Out"
   },
   {
-    description: "Direct Credit 001248 JOBSEEKER PYMT AA1A9071502562670L",
+    description: "Direct Credit 001248 JOBSEEKER PYMT",
     avatar: 'https://api.slingacademy.com/public/sample-users/4.png',
     amount: "778.00",
     direction: "credit",
@@ -73,7 +73,7 @@ export const transactionData  = [
     category: "Other"
   },
   {
-    description: "Direct Credit 001248 JOBSEEKER PYMT AA1A9071502562670L",
+    description: "Direct Credit 001248 JOBSEEKER PYMT",
     amount: "778.00",
     avatar: 'https://api.slingacademy.com/public/sample-users/5.png',
     direction: "credit",
