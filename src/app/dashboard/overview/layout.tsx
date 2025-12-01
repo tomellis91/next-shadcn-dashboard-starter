@@ -47,12 +47,14 @@ export default function OverViewLayout({
   transactions,
   pie_stats,
   bar_stats,
-  area_stats
+  area_stats,
+  subscription_stats,
 }: {
   transactions: React.ReactNode;
   pie_stats: React.ReactNode;
   bar_stats: React.ReactNode;
   area_stats: React.ReactNode;
+  subscription_stats: React.ReactNode;
 }) {
   const { user, isLoaded } = useUser();
   
@@ -92,7 +94,7 @@ export default function OverViewLayout({
           <div className='col-span-4 md:col-span-3'>
             {transactions}
           </div>
-          <div className='col-span-4'>{area_stats}</div>
+          <div className='col-span-4'>{subscription_stats}</div>
           <div className='col-span-4 md:col-span-3'>{pie_stats}</div>
         </div>
       </div>
