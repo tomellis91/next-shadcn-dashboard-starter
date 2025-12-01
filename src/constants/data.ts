@@ -69,7 +69,7 @@ export interface SaleUser {
   initials: string;
 }
 
-export const recentSalesData: SaleUser[] = [
+export const recentTransationsData: SaleUser[] = [
   {
     id: 1,
     name: 'Olivia Martin',
