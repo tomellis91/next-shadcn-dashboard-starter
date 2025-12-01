@@ -1,6 +1,9 @@
+'use client';
+
 import PageContainer from '@/components/layout/page-container';
 import { MetricCard, MetricCardProps } from '@/components/metric-card';
 import { IconTrendingDown, IconTrendingUp } from '@tabler/icons-react';
+import { useUser } from "@clerk/clerk-react";
 import React from 'react';
 
 type MetricCardData = Omit<MetricCardProps, 'Icon'> & { icon: typeof IconTrendingUp };
@@ -51,12 +54,23 @@ export default function OverViewLayout({
   bar_stats: React.ReactNode;
   area_stats: React.ReactNode;
 }) {
+  const { user, isLoaded } = useUser();
+  
+  if (!isLoaded) {
+      // Handle loading state
+      return null
+    }
+ 
+   if (!user) return null
+
+  
+
   return (
     <PageContainer>
       <div className='flex flex-1 flex-col space-y-2'>
         <div className='flex items-center justify-between space-y-2'>
           <h2 className='text-2xl font-bold tracking-tight'>
-            Hi, Welcome back 👋
+            Welcome back {user?.firstName}!
           </h2>
         </div>
 

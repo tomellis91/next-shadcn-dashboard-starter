@@ -13,7 +13,7 @@ export function RecentTransactions () {
   return (
     <Card className='h-full'>
       <CardHeader>
-        <CardTitle>Transactions</CardTitle>
+        <CardTitle>Recent Transactions</CardTitle>
         <CardDescription>You had 123 transactions this month.</CardDescription>
       </CardHeader>
       <CardContent>
